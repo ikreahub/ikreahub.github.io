@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iKréa - Créateurs de présence digitale</title>
+    <style>
+        /* CHARTE GRAPHIQUE iKRÉA */
+        :root {
+            --bleu-nuit: #0B1021;
+            --cyan: #00C4CC;
+            --orange: #E74C3C;
+            --vert: #8BC34A;
+            --blanc: #FFFFFF;
+            --fond-clair: #F4F7F9;
+            --gris-texte: #333333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--fond-clair); color: var(--gris-texte); line-height: 1.6; }
+
+        /* HEADER */
+        header { background-color: var(--bleu-nuit); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 28px; font-weight: bold; color: var(--cyan); letter-spacing: 1px; }
+        .logo span { color: var(--vert); }
+        nav a { color: var(--blanc); text-decoration: none; margin-left: 20px; font-weight: 500; }
+        nav a:hover { color: var(--cyan); }
+
+        /* HERO SECTION */
+        .hero { background-color: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 80px 20px; border-bottom: 4px solid var(--cyan); }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero h1 span { color: var(--cyan); }
+        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto 30px auto; color: #d1d5db; }
+        .btn { background-color: var(--orange); color: var(--blanc); padding: 15px 30px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; transition: 0.3s; }
+        .btn:hover { background-color: #c0392b; transform: scale(1.05); }
+
+        /* SERVICES */
+        .services { padding: 60px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .services h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--blanc); padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid var(--cyan); text-align: left; }
+        .card h3 { color: var(--bleu-nuit); margin-bottom: 15px; font-size: 24px; }
+        .price { font-size: 32px; font-weight: bold; color: var(--cyan); margin-bottom: 15px; }
+        .promo { color: var(--orange); font-weight: bold; font-size: 14px; text-transform: uppercase; }
+        .card ul { list-style-type: none; margin-bottom: 20px; }
+        .card ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
+        .card ul li::before { content: '✓'; color: var(--vert); position: absolute; left: 0; font-weight: bold; }
+
+        /* REASSURANCE */
+        .reassurance { background-color: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 40px 20px; }
+        .reassurance p { font-size: 18px; margin-bottom: 10px; }
+        .reassurance strong { color: var(--vert); }
+
+        /* FOOTER */
+        footer { background-color: #050812; color: #888; text-align: center; padding: 30px 20px; font-size: 14px; }
+        footer a { color: var(--cyan); text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">iKréa<span>.</span></div>
+        <nav>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>On crée votre digital,<br>vous créez votre <span>succès.</span></h1>
+        <p>Créateurs de présence digitale pour les entreprises ambitieuses. Sites web, SEO, réseaux sociaux et contenus vidéo. Des prix imbattables, une qualité premium.</p>
+        <a href="#contact" class="btn">Démarrer mon projet</a>
+    </section>
+
+    <section id="services" class="services">
+        <h2>Nos Offres Imbattables</h2>
+        <div class="grid">
+            <!-- Offre 1 -->
+            <div class="card">
+                <h3>Création / Refonte de Site</h3>
+                <div class="price">120 €</div>
+                <div class="promo">Offre de lancement 2027</div>
+                <br>
+                <ul>
+                    <li>Site 100% sur-mesure</li>
+                    <li>Optimisé Mobile & Tablette</li>
+                    <li>Design chic et professionnel</li>
+                    <li>Référencement SEO de base</li>
+                </ul>
+                <p style="font-size: 14px; color: #666;">Aucun contrat. Vous payez une fois le site parfait.</p>
+            </div>
+
+            <!-- Offre 2 -->
+            <div class="card" style="border-top-color: var(--orange);">
+                <h3>Abonnement Multimédia</h3>
+                <div class="price">60 € <span style="font-size: 16px; color: #666;">/ mois</span></div>
+                <div class="promo" style="color: var(--vert);">Sans engagement</div>
+                <br>
+                <ul>
+                    <li>Gestion complète du site</li>
+                    <li>Réseaux sociaux & Google Maps</li>
+                    <li>4 vidéos Short / Réels par mois</li>
+                    <li>Posts, images retouchées, brochures</li>
+                </ul>
+                <p style="font-size: 14px; color: #666;">Même nom de domaine, même email. Zéro dérangement.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reassurance">
+        <p>🔒 <strong>Zéro risque :</strong> Aucun contrat à signer. Aucun paiement avant validation.</p>
+        <p>🚀 <strong>Zéro dérangement :</strong> On s'occupe de tout, vous restez concentré sur votre business.</p>
+    </section>
+
+    <footer id="contact">
+        <p><strong>iKréa — Créateurs de présence digitale</strong></p>
+        <p>📞 +216 54 160 502 | ✉️ 3971bs@gmail.com</p>
+        <p style="margin-top: 10px;">&copy; 2026 iKréa. Tous droits réservés.</p>
+    </footer>
+
+</body>
+</html>
