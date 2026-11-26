@@ -14,109 +14,215 @@
             --blanc: #FFFFFF;
             --fond-clair: #F4F7F9;
             --gris-texte: #333333;
+            --rouge-vif: #D32F2F;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: var(--fond-clair); color: var(--gris-texte); line-height: 1.6; }
 
+        /* BANNIÈRE EN CONSTRUCTION + COMPTE À REBOURS */
+        .construction-banner {
+            background-color: var(--rouge-vif);
+            color: var(--blanc);
+            text-align: center;
+            padding: 15px 20px;
+            font-size: 24px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+            position: relative;
+            z-index: 100;
+        }
+        .countdown {
+            display: block;
+            font-size: 32px;
+            margin-top: 5px;
+            font-family: monospace;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
         /* HEADER */
-        header { background-color: var(--bleu-nuit); padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 28px; font-weight: bold; color: var(--cyan); letter-spacing: 1px; }
-        .logo span { color: var(--vert); }
-        nav a { color: var(--blanc); text-decoration: none; margin-left: 20px; font-weight: 500; }
-        nav a:hover { color: var(--cyan); }
+        header { background-color: var(--bleu-nuit); padding: 20px 50px; display: flex; justify-content: center; align-items: center; border-bottom: 2px solid var(--cyan); }
+        .logo img { height: 70px; width: auto; }
 
         /* HERO SECTION */
-        .hero { background-color: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 80px 20px; border-bottom: 4px solid var(--cyan); }
-        .hero h1 { font-size: 48px; margin-bottom: 20px; }
+        .hero { background-color: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 60px 20px 80px 20px; }
+        .hero h1 { font-size: 48px; margin-bottom: 20px; line-height: 1.2; }
         .hero h1 span { color: var(--cyan); }
-        .hero p { font-size: 20px; max-width: 800px; margin: 0 auto 30px auto; color: #d1d5db; }
-        .btn { background-color: var(--orange); color: var(--blanc); padding: 15px 30px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px; display: inline-block; transition: 0.3s; }
-        .btn:hover { background-color: #c0392b; transform: scale(1.05); }
+        .hero p { font-size: 20px; max-width: 700px; margin: 0 auto 40px auto; color: #d1d5db; }
+        
+        .btn { 
+            background-color: var(--orange); color: var(--blanc); padding: 18px 40px; 
+            text-decoration: none; font-size: 20px; font-weight: bold; border-radius: 50px; 
+            display: inline-block; transition: 0.3s; border: none; cursor: pointer;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+        }
+        .btn:hover { background-color: #c0392b; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6); }
 
         /* SERVICES */
-        .services { padding: 60px 20px; max-width: 1200px; margin: 0 auto; text-align: center; }
-        .services h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 40px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--blanc); padding: 30px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 5px solid var(--cyan); text-align: left; }
-        .card h3 { color: var(--bleu-nuit); margin-bottom: 15px; font-size: 24px; }
-        .price { font-size: 32px; font-weight: bold; color: var(--cyan); margin-bottom: 15px; }
-        .promo { color: var(--orange); font-weight: bold; font-size: 14px; text-transform: uppercase; }
-        .card ul { list-style-type: none; margin-bottom: 20px; }
-        .card ul li { margin-bottom: 10px; padding-left: 25px; position: relative; }
-        .card ul li::before { content: '✓'; color: var(--vert); position: absolute; left: 0; font-weight: bold; }
-
-        /* REASSURANCE */
-        .reassurance { background-color: var(--bleu-nuit); color: var(--blanc); text-align: center; padding: 40px 20px; }
-        .reassurance p { font-size: 18px; margin-bottom: 10px; }
-        .reassurance strong { color: var(--vert); }
+        .services { padding: 80px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+        .services h2 { font-size: 36px; color: var(--bleu-nuit); margin-bottom: 50px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        
+        .card { 
+            background: var(--blanc); padding: 40px 30px; border-radius: 15px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08); border-top: 6px solid var(--cyan); 
+            text-align: left; transition: 0.3s;
+        }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 15px 40px rgba(0,0,0,0.15); }
+        .card h3 { color: var(--bleu-nuit); margin-bottom: 15px; font-size: 26px; }
+        .price { font-size: 42px; font-weight: 900; color: var(--cyan); margin-bottom: 25px; }
+        .price span { font-size: 18px; color: #666; font-weight: normal; }
+        
+        .card ul { list-style-type: none; }
+        .card ul li { margin-bottom: 15px; padding-left: 30px; position: relative; font-size: 16px; }
+        .card ul li::before { content: '✓'; color: var(--vert); position: absolute; left: 0; font-weight: 900; font-size: 18px; }
 
         /* FOOTER */
-        footer { background-color: #050812; color: #888; text-align: center; padding: 30px 20px; font-size: 14px; }
+        footer { background-color: #050812; color: #888; text-align: center; padding: 40px 20px; font-size: 14px; }
+        footer strong { color: var(--blanc); font-size: 16px; }
         footer a { color: var(--cyan); text-decoration: none; }
+
+        /* MODALE (Fenêtre pop-up) */
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(11, 16, 33, 0.8); z-index: 1000; justify-content: center; align-items: center;
+        }
+        .modal-content {
+            background: var(--blanc); padding: 40px; border-radius: 15px; text-align: center;
+            max-width: 400px; width: 90%; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-top: 6px solid var(--rouge-vif);
+        }
+        .modal-content h3 { color: var(--bleu-nuit); margin-bottom: 15px; font-size: 24px; }
+        .modal-content p { margin-bottom: 25px; color: #555; }
+        .modal-buttons { display: flex; flex-direction: column; gap: 10px; }
+        .modal-buttons a { 
+            padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; display: block;
+        }
+        .btn-appel { background-color: var(--cyan); color: var(--bleu-nuit); }
+        .btn-whatsapp { background-color: var(--vert); color: var(--blanc); }
+        .btn-email { background-color: var(--bleu-nuit); color: var(--blanc); }
+        .btn-close { background-color: #eee; color: #333; border: none; padding: 10px; border-radius: 8px; cursor: pointer; font-weight: bold; margin-top: 10px; }
     </style>
 </head>
 <body>
 
+    <!-- BANNIÈRE ROUGE EN CONSTRUCTION -->
+    <div class="construction-banner">
+        🚧 Site en construction 🚧
+        <span class="countdown" id="timer">12:00:00</span>
+    </div>
+
     <header>
-        <div class="logo">iKréa<span>.</span></div>
-        <nav>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
-        </nav>
+        <div class="logo">
+            <!-- N'oublie pas d'uploader ton logo sur GitHub et de garder le nom logo.png ou logo.jpg -->
+            <img src="logo.png" alt="iKréa Logo">
+        </div>
     </header>
 
     <section class="hero">
         <h1>On crée votre digital,<br>vous créez votre <span>succès.</span></h1>
-        <p>Créateurs de présence digitale pour les entreprises ambitieuses. Sites web, SEO, réseaux sociaux et contenus vidéo. Des prix imbattables, une qualité premium.</p>
-        <a href="#contact" class="btn">Démarrer mon projet</a>
+        <p>Sites web, SEO, réseaux sociaux et contenus vidéo. La présence digitale premium pour les entreprises ambitieuses.</p>
+        <button class="btn" onclick="ouvrirModal()">Démarrer mon projet</button>
     </section>
 
     <section id="services" class="services">
-        <h2>Nos Offres Imbattables</h2>
+        <h2>Nos Offres</h2>
         <div class="grid">
             <!-- Offre 1 -->
             <div class="card">
                 <h3>Création / Refonte de Site</h3>
                 <div class="price">120 €</div>
-                <div class="promo">Offre de lancement 2027</div>
-                <br>
                 <ul>
                     <li>Site 100% sur-mesure</li>
                     <li>Optimisé Mobile & Tablette</li>
                     <li>Design chic et professionnel</li>
                     <li>Référencement SEO de base</li>
                 </ul>
-                <p style="font-size: 14px; color: #666;">Aucun contrat. Vous payez une fois le site parfait.</p>
             </div>
 
             <!-- Offre 2 -->
             <div class="card" style="border-top-color: var(--orange);">
                 <h3>Abonnement Multimédia</h3>
-                <div class="price">60 € <span style="font-size: 16px; color: #666;">/ mois</span></div>
-                <div class="promo" style="color: var(--vert);">Sans engagement</div>
-                <br>
+                <div class="price">60 € <span>/ mois</span></div>
                 <ul>
                     <li>Gestion complète du site</li>
                     <li>Réseaux sociaux & Google Maps</li>
                     <li>4 vidéos Short / Réels par mois</li>
                     <li>Posts, images retouchées, brochures</li>
                 </ul>
-                <p style="font-size: 14px; color: #666;">Même nom de domaine, même email. Zéro dérangement.</p>
             </div>
         </div>
     </section>
 
-    <section class="reassurance">
-        <p>🔒 <strong>Zéro risque :</strong> Aucun contrat à signer. Aucun paiement avant validation.</p>
-        <p>🚀 <strong>Zéro dérangement :</strong> On s'occupe de tout, vous restez concentré sur votre business.</p>
-    </section>
-
-    <footer id="contact">
+    <footer>
         <p><strong>iKréa — Créateurs de présence digitale</strong></p>
-        <p>📞 +216 54 160 502 | ✉️ 3971bs@gmail.com</p>
-        <p style="margin-top: 10px;">&copy; 2026 iKréa. Tous droits réservés.</p>
+        <p style="margin-top: 10px;">📞 +216 54 160 502 | ✉️ 3971bs@gmail.com</p>
+        <p style="margin-top: 20px;">&copy; 2026 iKréa. Tous droits réservés.</p>
     </footer>
 
+    <!-- FENÊTRE POP-UP (MODALE) -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <h3>🚧 En construction</h3>
+            <p>Le site est actuellement en cours de finalisation.<br><br>Vous pouvez nous contacter dès maintenant :</p>
+            
+            <div class="modal-buttons">
+                <a href="tel:+21654160502" class="btn-appel">📞 Appeler le +216 54 160 502</a>
+                <a href="https://wa.me/21654160502" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
+                <a href="mailto:3971bs@gmail.com" class="btn-email">✉️ Envoyer un Email</a>
+            </div>
+            
+            <button class="btn-close" onclick="fermerModal()">Fermer</button>
+        </div>
+    </div>
+
+    <!-- SCRIPT POUR LE COMPTE À REBOURS ET LA MODALE -->
+    <script>
+        // --- 1. COMPTE À REBOURS 12 HEURES ---
+        let tempsRestant = 12 * 60 * 60; // 12 heures en secondes
+
+        function mettreAJourCompteARebours() {
+            let heures = Math.floor(tempsRestant / 3600);
+            let minutes = Math.floor((tempsRestant % 3600) / 60);
+            let secondes = tempsRestant % 60;
+
+            // Formater en HH:MM:SS
+            heures = heures < 10 ? "0" + heures : heures;
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            secondes = secondes < 10 ? "0" + secondes : secondes;
+
+            document.getElementById("timer").textContent = heures + ":" + minutes + ":" + secondes;
+
+            if (tempsRestant > 0) {
+                tempsRestant--;
+            } else {
+                clearInterval(intervalle);
+                document.getElementById("timer").textContent = "00:00:00";
+            }
+        }
+
+        // Lancer le compte à rebours
+        mettreAJourCompteARebours();
+        let intervalle = setInterval(mettreAJourCompteARebours, 1000);
+
+        // --- 2. GESTION DE LA FENÊTRE POP-UP ---
+        function ouvrirModal() {
+            document.getElementById("contactModal").style.display = "flex";
+        }
+
+        function fermerModal() {
+            document.getElementById("contactModal").style.display = "none";
+        }
+
+        // Fermer si on clique en dehors de la fenêtre
+        window.onclick = function(event) {
+            let modal = document.getElementById("contactModal");
+            if (event.target == modal) {
+                fermerModal();
+            }
+        }
+    </script>
 </body>
-</html>
+</html></html>
