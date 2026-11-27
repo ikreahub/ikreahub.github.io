@@ -5,13 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Analyse de site</title>
 <style>
-  body { font-family: Arial, sans-serif; max-width: 700px; margin: 80px auto; padding: 0 20px; background: #fff; color: #222; }
+  body { font-family: Arial, sans-serif; max-width: 700px; margin: 60px auto; padding: 0 20px; background: #fff; color: #222; }
   h1 { font-size: 22px; font-weight: normal; margin-bottom: 24px; }
   input { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #ccc; box-sizing: border-box; }
   button { margin-top: 12px; padding: 12px 24px; font-size: 16px; background: #222; color: #fff; border: none; cursor: pointer; }
   button:disabled { opacity: 0.5; cursor: wait; }
   #result { margin-top: 32px; white-space: pre-wrap; line-height: 1.6; }
-  #email { margin-top: 32px; display: none; }
+  #email { margin-top: 40px; padding-top: 24px; border-top: 1px solid #ddd; display: none; }
+  #email p { margin-bottom: 12px; }
   #email input { margin-bottom: 8px; }
 </style>
 </head>
@@ -24,25 +25,29 @@
 <div id="result"></div>
 
 <div id="email">
-  <p>Pour recevoir la nouvelle maquette gratuite, laissez votre email :</p>
+  <p>Laissez votre email pour recevoir la maquette de votre futur site web :</p>
   <input type="email" id="emailinput" placeholder="vous@exemple.com" />
-  <button onclick="envoyerEmail()">Recevoir la maquette</button>
+  <button id="emailbtn" onclick="envoyerEmail()">Recevoir la maquette</button>
   <div id="emailsent" style="margin-top:12px;"></div>
 </div>
 
 <script>
-const WORKER_URL = 'https://ag002.3971bs.workers.dev';
+const WORKER_URL = 'https://ag002.TON-COMPTE.workers.dev';
+const FORMSPREE_ID = 'mljbkgdo';
 
 async function analyser() {
   const url = document.getElementById('url').value.trim();
   if (!url) return;
+
   const btn = document.getElementById('go');
   const result = document.getElementById('result');
   const emailDiv = document.getElementById('email');
+
   btn.disabled = true;
   btn.textContent = 'Analyse en cours...';
   result.textContent = '';
   emailDiv.style.display = 'none';
+
   try {
     const res = await fetch(WORKER_URL, {
       method: 'POST',
@@ -50,15 +55,16 @@ async function analyser() {
       body: JSON.stringify({ url })
     });
     const data = await res.json();
+
     if (data.error) {
-      result.textContent = 'Erreur : ' + data.error;
+      result.textContent = 'Analyse indisponible pour le moment.';
     } else {
       result.textContent = data.report;
-      emailDiv.style.display = 'block';
     }
   } catch (e) {
-    result.textContent = 'Erreur de connexion.';
+    result.textContent = 'Analyse indisponible pour le moment.';
   } finally {
+    emailDiv.style.display = 'block';
     btn.disabled = false;
     btn.textContent = 'Analyser';
   }
@@ -67,10 +73,35 @@ async function analyser() {
 async function envoyerEmail() {
   const email = document.getElementById('emailinput').value.trim();
   if (!email) return;
-  document.getElementById('emailsent').textContent = 'Merci ! On vous contacte bientôt.';
+
+  const sent = document.getElementById('emailsent');
+  const btnEmail = document.getElementById('emailbtn');
+  sent.textContent = 'Envoi en cours...';
+  btnEmail.disabled = true;
+
+  try {
+    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        site: document.getElementById('url').value.trim()
+      })
+    });
+
+    if (res.ok) {
+      sent.textContent = 'Merci ! Vous recevrez la maquette très bientôt.';
+      document.getElementById('emailinput').value = '';
+    } else {
+      sent.textContent = 'Merci ! Nous vous contactons bientôt.';
+    }
+  } catch (e) {
+    sent.textContent = 'Merci ! Nous vous contactons bientôt.';
+  } finally {
+    btnEmail.disabled = false;
+  }
 }
 </script>
 
 </body>
-</html>
 </html>
