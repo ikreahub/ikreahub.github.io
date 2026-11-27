@@ -31,53 +31,7 @@
 </div>
 
 <script>
-const WORKER_URL = 'https://ag002.TON-COMPTE.workers.dev'; // ← remplace ici
-
-async function analyser() {
-  const url = document.getElementById('url').value.trim();
-  if (!url) return;
-  const btn = document.getElementById('go');
-  const result = document.getElementById('result');
-  const emailDiv = document.getElementById('email');
-  btn.disabled = true;
-  btn.textContent = 'Analyse en cours...';
-  result.textContent = '';
-  emailDiv.style.display = 'none';
-  try {
-    const res = await fetch(<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Analyse de site</title>
-<style>
-  body { font-family: Arial, sans-serif; max-width: 700px; margin: 80px auto; padding: 0 20px; background: #fff; color: #222; }
-  h1 { font-size: 22px; font-weight: normal; margin-bottom: 24px; }
-  input { width: 100%; padding: 12px; font-size: 16px; border: 1px solid #ccc; box-sizing: border-box; }
-  button { margin-top: 12px; padding: 12px 24px; font-size: 16px; background: #222; color: #fff; border: none; cursor: pointer; }
-  button:disabled { opacity: 0.5; cursor: wait; }
-  #result { margin-top: 32px; white-space: pre-wrap; line-height: 1.6; }
-  #email { margin-top: 32px; display: none; }
-  #email input { margin-bottom: 8px; }
-</style>
-</head>
-<body>
-
-<h1>Entrez l'adresse de votre site</h1>
-<input type="url" id="url" placeholder="monsite.com" />
-<button id="go" onclick="analyser()">Analyser</button>
-
-<div id="result"></div>
-
-<div id="email">
-  <p>Pour recevoir la nouvelle maquette gratuite, laissez votre email :</p>
-  <input type="email" id="emailinput" placeholder="vous@exemple.com" />
-  <button onclick="envoyerEmail()">Recevoir la maquette</button>
-  <div id="emailsent" style="margin-top:12px;"></div>
-</div>
-
-<script>
-const WORKER_URL = 'https://ag002.TON-COMPTE.workers.dev'; // ← remplace ici
+const WORKER_URL = 'https://ag002.TON-COMPTE.workers.dev';
 
 async function analyser() {
   const url = document.getElementById('url').value.trim();
@@ -114,36 +68,6 @@ async function envoyerEmail() {
   const email = document.getElementById('emailinput').value.trim();
   if (!email) return;
   document.getElementById('emailsent').textContent = 'Merci ! On vous contacte bientôt.';
-  // plus tard : envoyer vers Formspree / Google Sheets
-}
-</script>
-
-</body>
-</html>, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ url })
-    });
-    const data = await res.json();
-    if (data.error) {
-      result.textContent = 'Erreur : ' + data.error;
-    } else {
-      result.textContent = data.report;
-      emailDiv.style.display = 'block';
-    }
-  } catch (e) {
-    result.textContent = 'Erreur de connexion.';
-  } finally {
-    btn.disabled = false;
-    btn.textContent = 'Analyser';
-  }
-}
-
-async function envoyerEmail() {
-  const email = document.getElementById('emailinput').value.trim();
-  if (!email) return;
-  document.getElementById('emailsent').textContent = 'Merci ! On vous contacte bientôt.';
-  // plus tard : envoyer vers Formspree / Google Sheets
 }
 </script>
 
